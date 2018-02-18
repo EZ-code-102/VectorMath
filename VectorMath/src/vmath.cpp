@@ -28,6 +28,15 @@ Vec3::Vec3(float const x, float const y, float const z)
 	UpdateAll();
 }
 
+//Copy constructor
+Vec3::Vec3(Vec3 const &vec)
+{
+	m_x = vec.m_x;
+	m_y = vec.m_y;
+	m_z = vec.m_z;
+	UpdateAll();
+}
+
 
 //--------------- AUX FUNCTIONS ----------------------------
 
@@ -40,12 +49,48 @@ void Vec3::UpdateAll()
 //Calculates the current magnitude of the vector
 void Vec3::CalcMagnitude()
 {
-	float sum = 0.0;
+	float sum = 0.0f;
 	sum += m_x * m_x;
 	sum += m_y * m_y;
 	sum += m_z * m_z;
 	m_mag = sqrt(sum);
 }
+
+
+
+
+
+//------------ CLASS TRANSFORM MATRIX ----------------------------
+
+//Default constructor
+TransformMatrix::TransformMatrix()
+{
+	for (unsigned i = 0; i < 2; ++i) {
+		for (unsigned j = 0; j < 2; ++j) {
+			m_values[i][j] = 0.0f;
+		}
+	}
+}
+
+//Primary constructor
+TransformMatrix::TransformMatrix(float const _00, float const _01, float const _02, float const _10, float const _11, float const _12, float const _20, float const _21, float const _22)
+{
+	m_values[0][0] = _00;
+	m_values[0][1] = _01;
+	m_values[0][2] = _02;
+	m_values[1][0] = _10;
+	m_values[1][1] = _11;
+	m_values[1][2] = _12;
+	m_values[2][0] = _20;
+	m_values[2][1] = _21;
+	m_values[2][2] = _22;
+}
+
+
+//----------------------------------------------------------------
+
+
+
 
 //--------------- NAMESPACE VMATH ---------------------------
 

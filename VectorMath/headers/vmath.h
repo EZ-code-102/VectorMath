@@ -9,6 +9,9 @@ public:
 	//Primary constructor
 	Vec3(float const x, float const y, float const z);
 
+	//Copy constructor
+	Vec3(Vec3 const &vec);
+
 	// AUX FUNCTIONS
 	//Updates all members
 	void UpdateAll();
@@ -36,6 +39,19 @@ extern Vec3 ihat;
 extern Vec3 jhat;
 extern Vec3 khat;
 //------------------------------------------
+
+
+
+class TransformMatrix {
+public:
+	//Default constructor
+	TransformMatrix();
+	//Primary constructor
+	TransformMatrix(float const _00, float const _01, float const _02, float const _10, float const _11, float const _12, float const _20, float const _21, float const _22);
+
+	float m_values[3][3];
+
+};
 
 
 
@@ -72,3 +88,4 @@ namespace vmath
 	//Returns a vector that is midway from two vectors (linear interpolation)
 	Vec3 vec3LERP(Vec3 const &lhs, Vec3 const &rhs, float const beta);
 }
+//----------------------------------------------------------------------------
